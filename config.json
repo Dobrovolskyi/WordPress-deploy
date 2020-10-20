@@ -1,0 +1,46 @@
+{
+    "sites": [
+        {
+            "sitename": "myFirstSite.local",
+            "siteroot_dir": "/var/www/html/myFirstSite",
+            "siteadmin": "admin@myFirstSite.local",
+            "db": {
+                "username": "myFirstSiteUser",
+                "password": "$tr0ngPwd1",
+                "name": "myFirstSiteDB"
+            },
+            "backup": {
+                "periodicity": "* 0 * *",
+                "retention": 14
+            },
+            "requirements": [
+                "apache2",
+                "mysql-server",
+                "php",
+                "php-mysql",
+                "libapache2-mod-php"
+            ]
+        },
+        {
+            "sitename": "mySecondSite.local",
+            "siteroot_dir": "/var/www/html/mySecondSite",
+            "siteadmin": "admin@mySecondSite.local",
+            "db": {
+                "username": "mySecondSiteUser",
+                "password": "$tr0ngPwd2",
+                "name": "mySecondSiteDB"
+            },
+            "backup": {
+                "periodicity": "* 1 * *",
+                "retention": 14
+            },
+            "requirements": [
+                "apache2",
+                "mysql-server",
+                "php",
+                "php-mysql",
+                "libapache2-mod-php"
+            ]
+        }
+    ]
+}
