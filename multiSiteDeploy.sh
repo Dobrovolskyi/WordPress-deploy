@@ -84,18 +84,8 @@ do
     mkdir "$SITEDIR/backups"
 
     cat >$SITEDIR/backups/backup.sh <<'EOT'
-# PARSING CONFIG
-SITENAME=$(cat ./config.json | jq '.sitename' | tr -d '"');
-SITEDIR=$(cat ./config.json | jq '.siteroot_dir' | tr -d '"');
-DB_NAME=$(cat ./config.json | jq '.db.name' | tr -d '"');
-DB_USER=$(cat ./config.json | jq '.db.username' | tr -d '"');
-DB_PASS=$(cat ./config.json | jq '.db.password' | tr -d '"');
-
-BKP_RETANTION=$(cat ./config.json | jq '.backup.retention');
-BKP_PERIODICITY=$(cat ./config.json | jq '.backup.periodicity');
-
 # Retantion period control
-find $BACKUP_DIR -maxdepth 1 -mtime +$BKP_RETANTION -type d -exec rm -rv {} \;
+find $BACKUP_DIR -maxdepth 1 -mtime $BKP_RETANTION*24 -type f -exec rm -rv {} \;
 
 # Set the date format, filename and the directories where your backup files will be placed and which directory will be archived.
 NOW=$(date +"%Y-%m-%d-%H%M")
