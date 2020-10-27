@@ -29,7 +29,6 @@ do
     echo "done!"
     done
 
-
     #===================================================================================
     ### INSTALLING WORDPRESS
     wget -c http://wordpress.org/latest.tar.gz
@@ -41,10 +40,8 @@ do
     sudo chown -R www-data:www-data $SITEDIR/$SITENAME
     sudo chmod -R 755 $SITEDIR/$SITENAME
 
-
     #===================================================================================
     ### CONFIGURING WebServer
-
     systemctl enable --now apache2
     ufw allow 80/tcp
 
@@ -83,7 +80,7 @@ do
     # Creating Backp script
     mkdir "$SITEDIR/backups"
 
-    cat >$SITEDIR/backups/backup.sh <<'EOT'
+    cat >$SITEDIR/backups/backup-$SITENAME.sh <<'EOT'
 # Retantion period control
 find $BACKUP_DIR -maxdepth 1 -mtime $BKP_RETANTION*24 -type f -exec rm -rv {} \;
 
